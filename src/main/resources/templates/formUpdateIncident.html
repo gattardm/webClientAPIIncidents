@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+  <title>Incident Web Application</title>
+
+  <style>
+        body { padding-top: 50px; }
+        .special { padding-top: 50px; }
+    </style>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href=".">Système de gestion des incidents</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container special">
+    <h2 class="h2">Modification d'un incident</h2>
+    <div>
+      <form method="post" th:action="@{/saveIncident}" th:object="${incident}">
+        <div class="form-group">
+          <input type="hidden" th:field="*{id}" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="typeInput">Type</label>
+          <input type="text" th:field="*{type}" class="form-control" id="typeInput"
+                 aria-describedby="typeHelp" placeholder="Saisir le type de l'incident"> <small
+                id="typeHelp" class="form-text text-muted">Merci d'indiquer le type de l'incident.</small>
+        </div>
+        <div class="form-group">
+          <label for="specialityNeededInput">Spécialité médicale nécessaire</label>
+          <input type="text" th:field="*{specialityNeeded}" class="form-control" id="specialityNeededInput"
+                 aria-describedby="specialityNeededHelp" placeholder="Saisir la spécialité médicale adéquate pour cet incident"> <small
+                id="specialityNeededHelp" class="form-text text-muted">Merci d'indiquer la spécialité médicale adéquate pour cet incident.</small>
+        </div>
+        <div class="form-group">
+          <label for="longitudeInput">Longitude de l'incident</label>
+          <input type="text" th:field="*{longitude}" class="form-control" id="longitudeInput"
+                 aria-describedby="longitudeHelp" placeholder="Saisir la longitude du lieu de l'incident"> <small
+                id="longitudeHelp" class="form-text text-muted">Merci d'indiquer la longitude du lieu de l'incident.</small>
+        </div>
+        <div class="form-group">
+          <label for="latitudeInput">Latitude de l'incident</label>
+          <input type="text" th:field="*{latitude}" class="form-control" id="latitudeInput"
+                 aria-describedby="latitudeHelp" placeholder="Saisir la latitude du lieu de l'incident"> <small
+                id="latitudeHelp" class="form-text text-muted">Merci d'indiquer la latitude du lieu de l'incident.</small>
+        </div>
+        <div class="form-group">
+          <label for="traitementInput">Traitement</label>*
+          <div class="form-group">
+            <input type="radio" th:field="*{traitement}" th:value="true" id="choix1"/>
+            <label for="choix1"> Traité</label><br/>
+            <input type="radio" th:field="*{traitement}" th:value="false"  id="choix2"/>
+            <label for="choix2"> Non traité</label>
+          </div>
+          <small id="traitementHelp" class="form-text text-muted">Merci d'indiquer si l'incident a été pris en compter par un opérateur (true/false)'.</small>
+        <button type="submit" class="btn btn-primary">Modifier</button>
+      </form>
+    </div>
+
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
